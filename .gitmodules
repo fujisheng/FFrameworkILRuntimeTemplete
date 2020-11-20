@@ -3,4 +3,4 @@
 	url = https://github.com/fujisheng/FFramework.git
 [submodule "Assets/Framework.IL"]
 	path = Assets/Framework.IL
-	url = git@code.aliyun.com:fujisheng9/Framework.ILRuntime.git
+	url = https://github.com/fujisheng/FFramework.ILRuntime.git
