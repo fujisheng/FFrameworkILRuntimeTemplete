@@ -9,15 +9,18 @@ namespace Game.Hotfix
         {
             Debug.Log($"aaaaa{Layer.POPUP}");
             Debug.Log("hello ilruntime");
-            Debug.Log("你在干啥呢");
-            Debug.Log(Get().Item1);
-            Debug.Log(Get().Item2);
-            Debug.Log(Get().Item3);
+            OpenView<HomeView>();
         }
 
-        static (int, string, bool) Get()
+        static async void OpenView<TView>()
         {
-            return (1, "2", true);
+            var viewType = typeof(TView);
+            string viewName = viewType.Name;
+            var context = Contexts.GetOrCreate<HomeViewModel, HomeView>();
+            var view = await context.CreateView();
+            context.BindWithAttribute(view);
         }
+
+        
     }
 }
