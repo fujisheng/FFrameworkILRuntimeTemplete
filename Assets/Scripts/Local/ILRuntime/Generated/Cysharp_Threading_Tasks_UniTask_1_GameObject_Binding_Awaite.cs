@@ -14,14 +14,14 @@ using ILRuntime.CLR.Utils;
 
 namespace ILRuntime.Runtime.Generated
 {
-    unsafe class System_Runtime_CompilerServices_TaskAwaiter_Binding
+    unsafe class Cysharp_Threading_Tasks_UniTask_1_GameObject_Binding_Awaiter_Binding
     {
         public static void Register(ILRuntime.Runtime.Enviorment.AppDomain app)
         {
             BindingFlags flag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;
             MethodBase method;
             Type[] args;
-            Type type = typeof(System.Runtime.CompilerServices.TaskAwaiter);
+            Type type = typeof(Cysharp.Threading.Tasks.UniTask<UnityEngine.GameObject>.Awaiter);
             args = new Type[]{};
             method = type.GetMethod("get_IsCompleted", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, get_IsCompleted_0);
@@ -29,12 +29,12 @@ namespace ILRuntime.Runtime.Generated
             method = type.GetMethod("GetResult", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, GetResult_1);
 
-            app.RegisterCLRCreateDefaultInstance(type, () => new System.Runtime.CompilerServices.TaskAwaiter());
+            app.RegisterCLRCreateDefaultInstance(type, () => new Cysharp.Threading.Tasks.UniTask<UnityEngine.GameObject>.Awaiter());
 
 
         }
 
-        static void WriteBackInstance(ILRuntime.Runtime.Enviorment.AppDomain __domain, StackObject* ptr_of_this_method, IList<object> __mStack, ref System.Runtime.CompilerServices.TaskAwaiter instance_of_this_method)
+        static void WriteBackInstance(ILRuntime.Runtime.Enviorment.AppDomain __domain, StackObject* ptr_of_this_method, IList<object> __mStack, ref Cysharp.Threading.Tasks.UniTask<UnityEngine.GameObject>.Awaiter instance_of_this_method)
         {
             ptr_of_this_method = ILIntepreter.GetObjectAndResolveReference(ptr_of_this_method);
             switch(ptr_of_this_method->ObjectType)
@@ -73,7 +73,7 @@ namespace ILRuntime.Runtime.Generated
                     break;
                  case ObjectTypes.ArrayReference:
                     {
-                        var instance_of_arrayReference = __mStack[ptr_of_this_method->Value] as System.Runtime.CompilerServices.TaskAwaiter[];
+                        var instance_of_arrayReference = __mStack[ptr_of_this_method->Value] as Cysharp.Threading.Tasks.UniTask<UnityEngine.GameObject>.Awaiter[];
                         instance_of_arrayReference[ptr_of_this_method->ValueLow] = instance_of_this_method;
                     }
                     break;
@@ -88,7 +88,7 @@ namespace ILRuntime.Runtime.Generated
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
             ptr_of_this_method = ILIntepreter.GetObjectAndResolveReference(ptr_of_this_method);
-            System.Runtime.CompilerServices.TaskAwaiter instance_of_this_method = (System.Runtime.CompilerServices.TaskAwaiter)typeof(System.Runtime.CompilerServices.TaskAwaiter).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            Cysharp.Threading.Tasks.UniTask<UnityEngine.GameObject>.Awaiter instance_of_this_method = (Cysharp.Threading.Tasks.UniTask<UnityEngine.GameObject>.Awaiter)typeof(Cysharp.Threading.Tasks.UniTask<UnityEngine.GameObject>.Awaiter).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
 
             var result_of_this_method = instance_of_this_method.IsCompleted;
 
@@ -109,15 +109,15 @@ namespace ILRuntime.Runtime.Generated
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
             ptr_of_this_method = ILIntepreter.GetObjectAndResolveReference(ptr_of_this_method);
-            System.Runtime.CompilerServices.TaskAwaiter instance_of_this_method = (System.Runtime.CompilerServices.TaskAwaiter)typeof(System.Runtime.CompilerServices.TaskAwaiter).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            Cysharp.Threading.Tasks.UniTask<UnityEngine.GameObject>.Awaiter instance_of_this_method = (Cysharp.Threading.Tasks.UniTask<UnityEngine.GameObject>.Awaiter)typeof(Cysharp.Threading.Tasks.UniTask<UnityEngine.GameObject>.Awaiter).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
 
-            instance_of_this_method.GetResult();
+            var result_of_this_method = instance_of_this_method.GetResult();
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
             WriteBackInstance(__domain, ptr_of_this_method, __mStack, ref instance_of_this_method);
 
             __intp.Free(ptr_of_this_method);
-            return __ret;
+            return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
         }
 
 

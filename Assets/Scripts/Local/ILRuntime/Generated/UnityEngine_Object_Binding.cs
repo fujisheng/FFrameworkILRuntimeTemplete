@@ -25,9 +25,12 @@ namespace ILRuntime.Runtime.Generated
             args = new Type[]{};
             method = type.GetMethod("get_name", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, get_name_0);
+            args = new Type[]{typeof(UnityEngine.Object)};
+            method = type.GetMethod("DontDestroyOnLoad", flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, DontDestroyOnLoad_1);
             args = new Type[]{typeof(UnityEngine.Object), typeof(System.Boolean)};
             method = type.GetMethod("DestroyImmediate", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, DestroyImmediate_1);
+            app.RegisterCLRMethodRedirection(method, DestroyImmediate_2);
 
 
         }
@@ -48,7 +51,23 @@ namespace ILRuntime.Runtime.Generated
             return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
         }
 
-        static StackObject* DestroyImmediate_1(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* DontDestroyOnLoad_1(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 1);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            UnityEngine.Object @target = (UnityEngine.Object)typeof(UnityEngine.Object).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+
+            UnityEngine.Object.DontDestroyOnLoad(@target);
+
+            return __ret;
+        }
+
+        static StackObject* DestroyImmediate_2(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;

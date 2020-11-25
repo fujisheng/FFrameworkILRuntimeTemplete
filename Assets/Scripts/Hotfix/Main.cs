@@ -18,7 +18,9 @@ namespace Game.Hotfix
             string viewName = viewType.Name;
             var context = Contexts.GetOrCreate<HomeViewModel, HomeView>();
             var view = await context.CreateView();
+            Debug.Log(view.viewName);
             context.BindWithAttribute(view);
+            context.SetValue<string>("title", "sssssssssssssssss");
         }
 
         

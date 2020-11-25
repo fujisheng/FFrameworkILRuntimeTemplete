@@ -1,4 +1,5 @@
 ﻿using Framework.IL.Hotfix.Module.UI;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Game.Hotfix
@@ -17,10 +18,10 @@ namespace Game.Hotfix
             base.OnOpen(param);
         }
 
-        [BindProperty("Name")]
+        [BindProperty("title")]
         void OnChangedName(string oldValue, string newValue)
         {
-            string a = newValue;
+            Debug.Log(newValue);
         }
     }
 }
