@@ -40,7 +40,7 @@ namespace ILRuntime.Runtime.Generated
             args = new Type[]{typeof(System.RuntimeTypeHandle)};
             method = type.GetMethod("GetTypeFromHandle", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, GetTypeFromHandle_5);
-            args = new Type[]{typeof(System.String)};
+            args = new Type[]{typeof(System.String), typeof(System.Reflection.BindingFlags)};
             method = type.GetMethod("GetField", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, GetField_6);
             args = new Type[]{typeof(System.String), typeof(System.Reflection.BindingFlags)};
@@ -173,17 +173,21 @@ namespace ILRuntime.Runtime.Generated
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
-            StackObject* __ret = ILIntepreter.Minus(__esp, 2);
+            StackObject* __ret = ILIntepreter.Minus(__esp, 3);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            System.String @name = (System.String)typeof(System.String).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            System.Reflection.BindingFlags @bindingAttr = (System.Reflection.BindingFlags)typeof(System.Reflection.BindingFlags).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
+            System.String @name = (System.String)typeof(System.String).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 3);
             System.Type instance_of_this_method = (System.Type)typeof(System.Type).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
             __intp.Free(ptr_of_this_method);
 
-            var result_of_this_method = instance_of_this_method.GetField(@name);
+            var result_of_this_method = instance_of_this_method.GetField(@name, @bindingAttr);
 
             return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
         }

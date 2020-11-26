@@ -7,8 +7,6 @@ namespace Game.Hotfix
     {
         public static void Initialize()
         {
-            Debug.Log($"aaaaa{Layer.POPUP}");
-            Debug.Log("hello ilruntime");
             OpenView<HomeView>();
         }
 
@@ -18,7 +16,6 @@ namespace Game.Hotfix
             string viewName = viewType.Name;
             var context = Contexts.GetOrCreate<HomeViewModel, HomeView>();
             var view = await context.CreateView();
-            Debug.Log(view.viewName);
             context.BindWithAttribute(view);
             context.SetValue<string>("title", "sssssssssssssssss");
         }

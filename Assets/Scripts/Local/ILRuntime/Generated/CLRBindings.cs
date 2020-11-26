@@ -45,6 +45,7 @@ namespace ILRuntime.Runtime.Generated
             System_Collections_Generic_List_1_ValueTuple_2_String_ILTypeInstance_Binding_Enumerator_Binding.Register(app);
             System_Reflection_MethodInfo_Binding.Register(app);
             System_Reflection_MethodBase_Binding.Register(app);
+            System_Reflection_CustomAttributeExtensions_Binding.Register(app);
             Framework_Module_Resource_IResourceLoader_Binding.Register(app);
             Cysharp_Threading_Tasks_UniTask_1_GameObject_Binding.Register(app);
             Cysharp_Threading_Tasks_UniTask_1_GameObject_Binding_Awaiter_Binding.Register(app);
@@ -60,6 +61,12 @@ namespace ILRuntime.Runtime.Generated
             System_Collections_Generic_Dictionary_2_String_List_1_ILTypeInstance_Binding.Register(app);
             System_Collections_Generic_Dictionary_2_String_ILTypeInstance_Binding_ValueCollection_Binding.Register(app);
             System_Collections_Generic_Dictionary_2_String_ILTypeInstance_Binding_ValueCollection_Binding_Enumerator_Binding.Register(app);
+            System_Collections_Generic_List_1_Int32_Binding.Register(app);
+            System_Collections_Generic_List_1_Action_2_String_String_Binding.Register(app);
+            System_Action_2_String_String_Binding.Register(app);
+            System_Collections_Generic_List_1_ValueTuple_2_Object_MethodInfo_Binding.Register(app);
+            System_ValueTuple_2_Object_MethodInfo_Binding.Register(app);
+            System_Collections_Generic_List_1_ValueTuple_2_Object_MethodInfo_Binding_Enumerator_Binding.Register(app);
 
             ILRuntime.CLR.TypeSystem.CLRType __clrType = null;
             __clrType = (ILRuntime.CLR.TypeSystem.CLRType)app.GetType (typeof(UnityEngine.Vector3));

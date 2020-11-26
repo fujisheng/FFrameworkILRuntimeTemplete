@@ -21,7 +21,7 @@ namespace Game.Hotfix
         [BindProperty("title")]
         void OnChangedName(string oldValue, string newValue)
         {
-            Debug.Log(newValue);
+            Debug.Log($"OnChangedTitle=>{newValue}");
         }
     }
 }
