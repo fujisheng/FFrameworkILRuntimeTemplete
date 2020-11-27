@@ -17,13 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 5128444be0feee0489b3a058328e2a5a
   m_SerializeEntries:
-  - m_GUID: 139b117019d79b542a8c5d9af01aed39
-    m_Address: Framework.IL.Hotfix.pdb
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Code
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
   - m_GUID: 2fd2b7da80b15484096547cb4ded6de8
     m_Address: Game.Hotfix.pdb
     m_ReadOnly: 0
@@ -33,13 +26,6 @@ MonoBehaviour:
     m_TargetAsset: {fileID: 0}
   - m_GUID: 4edea8fe122056147a0d50a7458c0c5b
     m_Address: Game.Hotfix.dll
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Code
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
-  - m_GUID: f76a4b246b4575144ac5dd447283e105
-    m_Address: Framework.IL.Hotfix.dll
     m_ReadOnly: 0
     m_SerializedLabels:
     - Code

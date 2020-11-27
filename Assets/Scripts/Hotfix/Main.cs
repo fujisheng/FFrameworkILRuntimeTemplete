@@ -7,19 +7,28 @@ namespace Game.Hotfix
     {
         public static void Initialize()
         {
+            Debug.Log("ILRuntime Initialize");
+            Contexts.Init();
             OpenView<HomeView>();
         }
 
-        static async void OpenView<TView>()
+        static async void OpenView<TView>() where TView : IView
         {
-            var viewType = typeof(TView);
-            string viewName = viewType.Name;
-            var context = Contexts.GetOrCreate<HomeViewModel, HomeView>();
+            Debug.Log("OpenView");
+            var context = Contexts.Create<TView>();
+            Debug.Log("CreateContextComplete");
             var view = await context.CreateView();
+            Debug.Log("CreateViewComplete");
             context.BindWithAttribute(view);
             context.SetValue<string>("title", "sssssssssssssssss");
         }
 
-        
+        static async void OpenView<TView, TViewModel>() where TView : IView where TViewModel : IViewModel
+        {
+            var context = Contexts.Create<TViewModel, TView>();
+            var view = await context.CreateView();
+            context.BindWithAttribute(view);
+            context.SetValue<string>("title", "sssssssssssssssss");
+        }
     }
 }

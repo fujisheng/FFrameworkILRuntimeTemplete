@@ -56,6 +56,12 @@ namespace ILRuntime.Runtime.Generated
             args = new Type[]{};
             method = type.GetMethod("get_Task", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, get_Task_2);
+            args = new Type[]{typeof(System.Exception)};
+            method = type.GetMethod("SetException", flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, SetException_3);
+            args = new Type[]{};
+            method = type.GetMethod("SetResult", flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, SetResult_4);
             args = new Type[]{typeof(Cysharp.Threading.Tasks.UniTask.Awaiter), typeof(Framework.IL.Adaptor.IAsyncStateMachineClassInheritanceAdaptor.IAsyncStateMachineAdaptor)};
             if (genericMethods.TryGetValue("AwaitUnsafeOnCompleted", out lst))
             {
@@ -64,18 +70,12 @@ namespace ILRuntime.Runtime.Generated
                     if(m.MatchGenericParameters(args, typeof(void), typeof(Cysharp.Threading.Tasks.UniTask.Awaiter).MakeByRefType(), typeof(Framework.IL.Adaptor.IAsyncStateMachineClassInheritanceAdaptor.IAsyncStateMachineAdaptor).MakeByRefType()))
                     {
                         method = m.MakeGenericMethod(args);
-                        app.RegisterCLRMethodRedirection(method, AwaitUnsafeOnCompleted_3);
+                        app.RegisterCLRMethodRedirection(method, AwaitUnsafeOnCompleted_5);
 
                         break;
                     }
                 }
             }
-            args = new Type[]{typeof(System.Exception)};
-            method = type.GetMethod("SetException", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, SetException_4);
-            args = new Type[]{};
-            method = type.GetMethod("SetResult", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, SetResult_5);
 
             app.RegisterCLRCreateDefaultInstance(type, () => new Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder());
 
@@ -235,7 +235,49 @@ namespace ILRuntime.Runtime.Generated
             return ILIntepreter.PushObject(__ret, __mStack, result_of_this_method);
         }
 
-        static StackObject* AwaitUnsafeOnCompleted_3(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* SetException_3(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 2);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            System.Exception @exception = (System.Exception)typeof(System.Exception).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+            __intp.Free(ptr_of_this_method);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
+            ptr_of_this_method = ILIntepreter.GetObjectAndResolveReference(ptr_of_this_method);
+            Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder instance_of_this_method = (Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder)typeof(Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+
+            instance_of_this_method.SetException(@exception);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
+            WriteBackInstance(__domain, ptr_of_this_method, __mStack, ref instance_of_this_method);
+
+            __intp.Free(ptr_of_this_method);
+            return __ret;
+        }
+
+        static StackObject* SetResult_4(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 1);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            ptr_of_this_method = ILIntepreter.GetObjectAndResolveReference(ptr_of_this_method);
+            Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder instance_of_this_method = (Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder)typeof(Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
+
+            instance_of_this_method.SetResult();
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            WriteBackInstance(__domain, ptr_of_this_method, __mStack, ref instance_of_this_method);
+
+            __intp.Free(ptr_of_this_method);
+            return __ret;
+        }
+
+        static StackObject* AwaitUnsafeOnCompleted_5(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
@@ -364,48 +406,6 @@ namespace ILRuntime.Runtime.Generated
 
             __intp.Free(ptr_of_this_method);
             ptr_of_this_method = ILIntepreter.Minus(__esp, 3);
-            WriteBackInstance(__domain, ptr_of_this_method, __mStack, ref instance_of_this_method);
-
-            __intp.Free(ptr_of_this_method);
-            return __ret;
-        }
-
-        static StackObject* SetException_4(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
-        {
-            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
-            StackObject* ptr_of_this_method;
-            StackObject* __ret = ILIntepreter.Minus(__esp, 2);
-
-            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            System.Exception @exception = (System.Exception)typeof(System.Exception).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
-            __intp.Free(ptr_of_this_method);
-
-            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
-            ptr_of_this_method = ILIntepreter.GetObjectAndResolveReference(ptr_of_this_method);
-            Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder instance_of_this_method = (Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder)typeof(Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
-
-            instance_of_this_method.SetException(@exception);
-
-            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
-            WriteBackInstance(__domain, ptr_of_this_method, __mStack, ref instance_of_this_method);
-
-            __intp.Free(ptr_of_this_method);
-            return __ret;
-        }
-
-        static StackObject* SetResult_5(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
-        {
-            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
-            StackObject* ptr_of_this_method;
-            StackObject* __ret = ILIntepreter.Minus(__esp, 1);
-
-            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
-            ptr_of_this_method = ILIntepreter.GetObjectAndResolveReference(ptr_of_this_method);
-            Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder instance_of_this_method = (Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder)typeof(Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack));
-
-            instance_of_this_method.SetResult();
-
-            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
             WriteBackInstance(__domain, ptr_of_this_method, __mStack, ref instance_of_this_method);
 
             __intp.Free(ptr_of_this_method);

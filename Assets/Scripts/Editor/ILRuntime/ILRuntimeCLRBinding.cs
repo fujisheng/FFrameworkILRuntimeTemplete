@@ -16,7 +16,6 @@ namespace Game.Editor
         {
             //用新的分析热更dll调用引用来生成绑定代码
             ILRuntime.Runtime.Enviorment.AppDomain domain = new ILRuntime.Runtime.Enviorment.AppDomain();
-            LoadDll(domain, "Assets/Sources/Code/Framework.IL.Hotfix.dll.bytes", out MemoryStream hotFixStream);
             LoadDll(domain, "Assets/Sources/Code/Game.Hotfix.dll.bytes", out MemoryStream gameStream);
 
             //Crossbind Adapter is needed to generate the correct binding code
