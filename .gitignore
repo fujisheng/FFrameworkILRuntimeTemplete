@@ -5,9 +5,12 @@ Library/
 Logs/
 *.csproj
 *.sln
+.vs/
+obj/
 
-Assets/Scripts/Generated/
-Assets/Scripts/Generated.meta
+Assets/Sources/Code/
+Assets/Scripts/Local/ILRuntime/Generated/
+Assets/Scripts/Local/ILRuntime/Generated.meta
 Assets/StreamingAssets/scripts.meta
 Assets/StreamingAssets/scripts/*
 !Assets/StreamingAssets/scripts/bootstrap.js
