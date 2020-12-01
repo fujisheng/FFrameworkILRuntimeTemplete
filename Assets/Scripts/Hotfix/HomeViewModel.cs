@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Game.Hotfix
 {
     
-    public class HomeViewModel : ViewModel,IPerloadViewModel
+    public class HomeViewModel : ViewModel//,IPerloadViewModel
     {
         int aaa = 21;
         BindableProperty<string> title = new BindableProperty<string>("Hello ILRuntime");
