@@ -17,7 +17,8 @@ namespace Game.Hotfix
             var context = Contexts.Create<TView>();
             var view = await context.CreateView();
             context.BindWithAttribute(view);
-            context.SetValue<string>("title", "sssssssssssssssss");
+            context.SetValue("title", "sssssssssssssssss");
+            context.SetValue("age", 10000, true);
         }
 
         static async void OpenView<TView, TViewModel>() where TView : IView where TViewModel : IViewModel
@@ -25,7 +26,8 @@ namespace Game.Hotfix
             var context = Contexts.Create<TViewModel, TView>();
             var view = await context.CreateView();
             context.BindWithAttribute(view);
-            context.SetValue<string>("title", "sssssssssssssssss");
+            context.SetValue("title", "sssssssssssssssss");
+            context.SetValue("age", 1000);
         }
     }
 }

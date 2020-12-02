@@ -7,9 +7,8 @@ namespace Game.Hotfix
     
     public class HomeViewModel : ViewModel//,IPerloadViewModel
     {
-        int aaa = 21;
         BindableProperty<string> title = new BindableProperty<string>("Hello ILRuntime");
-        List<int> bbb = new List<int>();
+        IntBp age = new IntBp(1000);
 
         public override void Init()
         {
