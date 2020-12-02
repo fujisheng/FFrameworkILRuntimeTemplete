@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Game.Hotfix
 {
-    [Bind(typeof(HomeViewModel), Layer.NORMAL, B.CACHE, "HomeView")]
+    [Bind(typeof(HomeViewModel), Layer.NORMAL, Flag.CACHE, "HomeView")]
     public class HomeView : View
     {
         public override void Init()
