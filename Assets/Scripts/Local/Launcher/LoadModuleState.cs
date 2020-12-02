@@ -26,7 +26,7 @@ namespace Game.Launch
 #endif
             await scriptManager.Load("Code");
             
-            scriptManager.InvokeMethod("Game.Hotfix.Main", "Initialize");
+            scriptManager.InvokeMethod("Game.Hotfix.Main", "Initialize", null, new object[] {scriptManager});
         }
 
         public override void OnUpdate(IFSM<Launcher> fsm)

@@ -1,4 +1,5 @@
 ﻿using Framework.IL.Hotfix.Module.UI;
+using Framework.Module.Script;
 using System;
 using UnityEngine;
 
@@ -6,9 +7,9 @@ namespace Game.Hotfix
 {
     public static class Main
     {
-        public static void Initialize()
+        public static void Initialize(IScriptManager scriptManager)
         {
-            Contexts.Init();
+            Contexts.Init(scriptManager);
             OpenView<HomeView>();
         }
 
