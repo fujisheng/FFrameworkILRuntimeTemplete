@@ -11,6 +11,7 @@ namespace Game.Hotfix
         {
             Contexts.Init(scriptManager);
             OpenView<HomeView>();
+            OpenView<HomeView, PublicViewModel>();
         }
 
         static async void OpenView<TView>() where TView : IView
@@ -27,7 +28,7 @@ namespace Game.Hotfix
             var context = Contexts.Create<TViewModel, TView>();
             var view = await context.CreateView();
             context.BindWithAttribute(view);
-            context.SetValue("title", "sssssssssssssssss");
+            context.SetValue("title", "我是通过PublicViewModel 设置的");
             context.SetValue("age", 1000);
         }
     }
