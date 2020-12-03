@@ -9,7 +9,7 @@ namespace Game.Hotfix
     {
         public static void Initialize(IScriptManager scriptManager)
         {
-            Contexts.Init(scriptManager);
+            Contexts.Initialize(scriptManager);
             OpenView<HomeView>();
             OpenView<HomeView, PublicViewModel>();
         }

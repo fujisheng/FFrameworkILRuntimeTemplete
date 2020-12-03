@@ -10,9 +10,9 @@ namespace Game.Hotfix
         BindableProperty<string> title = new BindableProperty<string>("Hello ILRuntime");
         IntBp age = new IntBp(1000);
 
-        public override void Init()
+        public override void Initialize()
         {
-            base.Init();
+            base.Initialize();
             Debug.Log("PublicViewModelInit");
         }
     }

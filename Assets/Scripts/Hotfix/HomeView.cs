@@ -7,9 +7,9 @@ namespace Game.Hotfix
     [Bind(typeof(HomeViewModel), Layer.NORMAL, Flag.CACHE, "HomeView")]
     public class HomeView : View
     {
-        public override void Init()
+        public override void Initialize()
         {
-            base.Init();
+            base.Initialize();
             Image image;
         }
 
