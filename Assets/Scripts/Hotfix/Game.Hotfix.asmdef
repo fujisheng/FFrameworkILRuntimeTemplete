@@ -1,0 +1,21 @@
+{
+    "name": "Game.Hotfix",
+    "references": [
+        "GUID:eccfeb5d31fe9e143aa6bf752d62e365",
+        "GUID:2dffbfe525adfd74da5e4b5befa4eb8c",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:7a1fa966b0ea23f40a6a4dc4dab1e297",
+        "GUID:ce670c204260fab43b0d480ae89c4aa9"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
