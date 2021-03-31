@@ -2,7 +2,7 @@
 Temp/
 Library/
 Library/
-FUPMPackages/
+FUPMPackages/*
 !FUPMPackages/manifest.json
 Logs/
 *.csproj
