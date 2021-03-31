@@ -10,9 +10,9 @@ namespace Game.Hotfix
         public override void Initialize()
         {
             base.Initialize();
-            Image image;
         }
 
+        //sssssssss
         public override void OnOpen(object param)
         {
             base.OnOpen(param);
@@ -21,7 +21,7 @@ namespace Game.Hotfix
         [BindProperty("title")]
         void OnChangedName(string oldValue, string newValue)
         {
-            Debug.Log($"OnChangedTitle=>{newValue}");
+            Debug.Log($"OnChanedTitle=>{newValue}");
         }
 
         [BindProperty("age")]

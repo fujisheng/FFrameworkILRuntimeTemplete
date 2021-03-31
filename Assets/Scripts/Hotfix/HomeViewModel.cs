@@ -13,6 +13,7 @@ namespace Game.Hotfix
         public override void Initialize()
         {
             base.Initialize();
+            title.Value = "sssss";
             Debug.Log("HomeViewModelInit");
         }
     }

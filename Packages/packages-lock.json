@@ -1,37 +1,57 @@
 {
   "dependencies": {
     "com.cysharp.unitask": {
-      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask#2.0.36",
+      "version": "file:./../FUPMPackages/com.cysharp.unitask",
       "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "3bebaef9694b012df09747b322362e3228f8c09d"
+      "source": "local",
+      "dependencies": {}
+    },
+    "com.demigiant.dotweenpro": {
+      "version": "file:./../FUPMPackages/com.demigiant.dotweenpro",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
+    "com.fujisheng.fframework": {
+      "version": "file:./../FUPMPackages/com.fujisheng.fframework",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
+    "com.fujisheng.fframework.ilruntime": {
+      "version": "file:./../FUPMPackages/com.fujisheng.fframework.ilruntime",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
+    "com.fujisheng.finject": {
+      "version": "file:./../FUPMPackages/com.fujisheng.finject",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
     },
     "com.ourpalm.ilruntime": {
-      "version": "1.6.5",
+      "version": "file:./../FUPMPackages/com.ourpalm.ilruntime",
       "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://registry.npmjs.org"
+      "source": "local",
+      "dependencies": {}
     },
     "com.unity.addressables": {
-      "version": "https://github.com/needle-mirror/com.unity.addressables.git#1.16.12",
+      "version": "file:./../FUPMPackages/com.unity.addressables",
       "depth": 0,
-      "source": "git",
+      "source": "local",
       "dependencies": {
-        "com.unity.scriptablebuildpipeline": "1.15.0",
+        "com.unity.scriptablebuildpipeline": "1.15.2",
         "com.unity.modules.assetbundle": "1.0.0",
         "com.unity.modules.unitywebrequest": "1.0.0",
         "com.unity.modules.unitywebrequestassetbundle": "1.0.0"
-      },
-      "hash": "2b42199f0f591351e2d568c87fef778f0ec11cc6"
+      }
     },
     "com.unity.scriptablebuildpipeline": {
-      "version": "https://github.com/needle-mirror/com.unity.scriptablebuildpipeline.git#1.14.1",
+      "version": "file:./../FUPMPackages/com.unity.scriptablebuildpipeline",
       "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "2dc0e6c556850685ec1fc325964558efb3b52d1c"
+      "source": "local",
+      "dependencies": {}
     },
     "com.unity.ugui": {
       "version": "1.0.0",

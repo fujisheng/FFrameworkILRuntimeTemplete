@@ -7,7 +7,7 @@ namespace Game.Local.IL.Reginster
     {
         public void Reginst(AppDomain appdomain)
         {
-            ILRuntime.Runtime.Generated.CLRBindings.Initialize(appdomain);
+            //ILRuntime.Runtime.Generated.CLRBindings.Initialize(appdomain);
         }
     }
 }
