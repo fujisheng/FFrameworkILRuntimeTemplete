@@ -1,10 +1,7 @@
-﻿using FInject;
+﻿using Framework.ILR.Module.Script;
 using Framework.Module;
 using Framework.Module.Debugger;
 using Framework.Module.FSM;
-using Framework.Module.Resource;
-using Framework.Module.Script;
-using Game.Local.IL.Reginster;
 
 namespace Game.Launch
 {
@@ -20,7 +17,6 @@ namespace Game.Launch
             debugger.LogY("现在是通过直接加载dll调用的");
 #else
             scriptManager = ScriptManager.Instance;
-            ScriptManager.Instance.SetReginster(new AdaptorReginster(), new CLRBinderReginster(), new ValueTypeBinderReginster(), new DelegateConvertor());
             debugger.LogY("现在是直接通过ILRuntime调用的");
 #endif
             fsm.Owner.injecter.Inject(scriptManager);

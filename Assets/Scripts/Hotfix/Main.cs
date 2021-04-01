@@ -1,7 +1,5 @@
-﻿using Framework.IL.Hotfix.Module.UI;
-using Framework.Module.Script;
-using System;
-using UnityEngine;
+﻿using Framework.ILR.Module.Script;
+using Framework.ILR.Module.UI;
 
 namespace Game.Hotfix
 {

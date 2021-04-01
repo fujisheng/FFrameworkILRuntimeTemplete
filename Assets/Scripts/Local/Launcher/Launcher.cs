@@ -1,8 +1,10 @@
 ﻿using FInject;
+using Framework.ILR.Module.Script;
 using Framework.Module;
 using Framework.Module.Debugger;
 using Framework.Module.FSM;
 using Framework.Module.Resource;
+using Game.Local.IL.Reginster;
 using UnityEngine;
 
 namespace Game.Launch
@@ -23,6 +25,8 @@ namespace Game.Launch
             context.Bind<IResourceManager>().ToInstance(resourceManager);
             context.Bind<IResourceLoader>().To<ResourceLoader>();
             context.Bind<IDebugger>().To<UnityDebugger>();
+
+            context.Bind<IILRuntimeReginster>().To<ILRuntimeReginster>();
 
             var fsmManager = ModuleManager.Instance.GetModule<IFSMManager>();
             var fsm = fsmManager.CreateFSM<Launcher>(this, new LoadModuleState());

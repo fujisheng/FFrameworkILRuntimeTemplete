@@ -1,4 +1,5 @@
 ﻿#if UNITY_EDITOR
+using Framework.ILR.Module;
 using Framework.Utility;
 using Game.Local.IL.Reginster;
 using ILRuntime.Mono.Cecil.Pdb;
@@ -19,14 +20,8 @@ namespace Game.Editor
             LoadDll(domain, "Assets/Sources/Code/Game.Hotfix.dll.bytes", out MemoryStream gameStream);
 
             //Crossbind Adapter is needed to generate the correct binding code
-            var adaptor = new AdaptorReginster(); 
-            var clr = new CLRBinderReginster(); 
-            var valueType = new ValueTypeBinderReginster(); 
-            var @delegate = new DelegateConvertor();
-            adaptor.Reginst(domain);
-            //clr.Reginst(domain);
-            valueType.Reginst(domain);
-            //@delegate.Convert(domain);
+            var reginster = new ILRuntimeReginster();
+            reginster.Reginster(domain);
 
             ILRuntime.Runtime.CLRBinding.BindingCodeGenerator.GenerateBindingCode(domain, "Assets/Scripts/Local/ILRuntime/Generated");
 

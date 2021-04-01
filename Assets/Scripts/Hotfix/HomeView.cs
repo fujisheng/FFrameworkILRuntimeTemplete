@@ -1,6 +1,5 @@
-﻿using Framework.IL.Hotfix.Module.UI;
+﻿using Framework.ILR.Module.UI;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Game.Hotfix
 {

@@ -1,10 +1,9 @@
-﻿using Framework.IL.Hotfix.Module.UI;
-using System.Collections.Generic;
+﻿using Framework.ILR.Module.UI;
 using UnityEngine;
 
 namespace Game.Hotfix
 {
-    
+
     public class HomeViewModel : ViewModel, IPerloadViewModel
     {
         BindableProperty<string> title = new BindableProperty<string>("Hello ILRuntime");
