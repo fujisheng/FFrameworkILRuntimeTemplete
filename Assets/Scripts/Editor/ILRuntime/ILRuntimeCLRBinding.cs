@@ -1,7 +1,7 @@
 ﻿#if UNITY_EDITOR
 using Framework.ILR.Module;
 using Framework.Utility;
-using Game.Local.IL.Reginster;
+using Game.Local.ILR.Reginster;
 using ILRuntime.Mono.Cecil.Pdb;
 using System.IO;
 using UnityEditor;

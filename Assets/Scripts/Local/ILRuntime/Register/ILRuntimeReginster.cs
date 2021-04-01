@@ -5,7 +5,7 @@ using System;
 using UnityEngine;
 using AppDomain = ILRuntime.Runtime.Enviorment.AppDomain;
 
-namespace Game.Local.IL.Reginster
+namespace Game.Local.ILR.Reginster
 {
     public class ILRuntimeReginster : IILRuntimeReginster
     {

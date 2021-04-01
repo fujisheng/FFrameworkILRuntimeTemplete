@@ -4,34 +4,42 @@ using Framework.Module;
 using Framework.Module.Debugger;
 using Framework.Module.FSM;
 using Framework.Module.Resource;
-using Game.Local.IL.Reginster;
+using Game.Local.ILR.Reginster;
 using UnityEngine;
 
-namespace Game.Launch
+namespace Game
 {
     public class Launcher : MonoBehaviour
     {
         public Context context { get; private set; }
-        public Injecter injecter { get; private set; }
-        private void Awake()
+
+        
+        private async void Awake()
         {
-            context = new Context();
-            injecter = new Injecter(context);
-            
-            ModuleManager.Instance.Injecter = injecter;
+            DontDestroyOnLoad(gameObject);
 
-            var resourceManager = ModuleManager.Instance.GetModule<IResourceManager>();
+            ModuleManager.SetInjectInfo(new ModuleDefaultInjectInfo());
+            context = ModuleManager.InjectInfo.Context;
 
-            context.Bind<IResourceManager>().AsInstance(resourceManager);
-            context.Bind<IResourceLoader>().As<ResourceLoader>();
-            context.Bind<IDebugger>().As<UnityDebugger>();
+            context.Bind<IDebuggerManager>().AsInstance(ModuleManager.GetModule<IDebuggerManager>());
+            context.Bind<IFSMManager>().AsInstance(ModuleManager.GetModule<IFSMManager>());
 
             context.Bind<IILRuntimeReginster>().As<ILRuntimeReginster>();
+            IScriptManager scriptManager;
+#if !ILRUNTIME
+            scriptManager = EditorScriptManager.Instance;
+            Debug.Log("<color=yellow>现在是通过直接加载dll调用的</color>");
+#else
+            scriptManager = ScriptManager.Instance;
+            Debug.Log("<color=yellow>现在是直接通过ILRuntime调用的</color>");
+#endif
+            context.Bind<IScriptManager>().AsInstance(scriptManager);
 
-            var fsmManager = ModuleManager.Instance.GetModule<IFSMManager>();
-            var fsm = fsmManager.CreateFSM<Launcher>(this, new LoadModuleState());
+            Injecter.Inject(typeof(Modules));
+            await Modules.Script.Load("Code");
+            var fsm = Modules.FSM.CreateFSM(this, new LoadModuleState());
             fsm.Start<LoadModuleState>();
-            DontDestroyOnLoad(gameObject);
+            
         }
     }
 }
