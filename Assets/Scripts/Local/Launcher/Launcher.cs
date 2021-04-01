@@ -22,11 +22,11 @@ namespace Game.Launch
 
             var resourceManager = ModuleManager.Instance.GetModule<IResourceManager>();
 
-            context.Bind<IResourceManager>().ToInstance(resourceManager);
-            context.Bind<IResourceLoader>().To<ResourceLoader>();
-            context.Bind<IDebugger>().To<UnityDebugger>();
+            context.Bind<IResourceManager>().AsInstance(resourceManager);
+            context.Bind<IResourceLoader>().As<ResourceLoader>();
+            context.Bind<IDebugger>().As<UnityDebugger>();
 
-            context.Bind<IILRuntimeReginster>().To<ILRuntimeReginster>();
+            context.Bind<IILRuntimeReginster>().As<ILRuntimeReginster>();
 
             var fsmManager = ModuleManager.Instance.GetModule<IFSMManager>();
             var fsm = fsmManager.CreateFSM<Launcher>(this, new LoadModuleState());
