@@ -1,5 +1,5 @@
 ﻿#if UNITY_EDITOR
-using Framework.ILR.Module.UI;
+//using Framework.ILR.Module.UI;
 using UnityEditor;
 
 namespace Game.Editor
@@ -16,7 +16,7 @@ namespace Game.Editor
 
             using (System.IO.StreamWriter sw = new System.IO.StreamWriter(templatePath))
             {
-                sw.WriteLine(ILRuntime.Runtime.Enviorment.CrossBindingCodeGenerator.GenerateCrossBindingAdapterCode(typeof(ViewModel), "Framework.IL.Module"));
+                //sw.WriteLine(ILRuntime.Runtime.Enviorment.CrossBindingCodeGenerator.GenerateCrossBindingAdapterCode(typeof(ViewModel), "Framework.IL.Module"));
             }
 
             AssetDatabase.Refresh();

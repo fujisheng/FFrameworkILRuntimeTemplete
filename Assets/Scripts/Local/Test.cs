@@ -1,9 +1,5 @@
 ﻿using Framework.ILR.Module.Script;
-using Framework.ILR.Module.UI;
-using Game;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class Test

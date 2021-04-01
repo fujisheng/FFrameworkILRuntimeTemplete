@@ -39,8 +39,8 @@ namespace Game.Local.ILR.Reginster
             //adaptor
             domain.RegisterCrossBindingAdaptor(new IAsyncStateMachineClassInheritanceAdaptor());
             //domain.RegisterCrossBindingAdaptor(new AttributeAdaptor());
-            domain.RegisterCrossBindingAdaptor(new ViewAdapter());
-            domain.RegisterCrossBindingAdaptor(new ViewModelAdapter());
+            //domain.RegisterCrossBindingAdaptor(new ViewAdapter());
+            //domain.RegisterCrossBindingAdaptor(new ViewModelAdapter());
         }
     }
 }
