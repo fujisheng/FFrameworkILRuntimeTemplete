@@ -28,10 +28,10 @@ namespace Game
             IScriptManager scriptManager;
 #if !ILRUNTIME
             scriptManager = EditorScriptManager.Instance;
-            Debug.Log("<color=yellow>现在是通过直接加载dll调用的</color>");
+            Debug.Log("<color=yellow>现在是直接加载dll调用的</color>");
 #else
             scriptManager = ScriptManager.Instance;
-            Debug.Log("<color=yellow>现在是直接通过ILRuntime调用的</color>");
+            Debug.Log("<color=yellow>现在是通过ILRuntime调用的</color>");
 #endif
             context.Bind<IScriptManager>().AsInstance(scriptManager);
 

@@ -7,9 +7,14 @@ namespace Game.Hotfix
     {
         public static void Initialize(IScriptManager scriptManager)
         {
-            Contexts.Initialize(scriptManager);
-            OpenView<HomeView>();
-            OpenView<HomeView, PublicViewModel>();
+            HomeView homeView = new HomeView();
+            UnityEngine.Debug.Log($"homeViewType=>{homeView.GetType()}");
+            Test.ShowType(homeView.GetType());
+            Test.ShowType<HomeView>();
+            homeView.OnChangedName(null, "nihaoaaoaoao");
+            //Contexts.Initialize(scriptManager);
+            //OpenView<HomeView>();
+            //OpenView<HomeView, PublicViewModel>();
         }
 
         static async void OpenView<TView>() where TView : IView

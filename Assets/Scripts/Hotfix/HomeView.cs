@@ -18,13 +18,13 @@ namespace Game.Hotfix
         }
 
         [BindProperty("title")]
-        void OnChangedName(string oldValue, string newValue)
+        public void OnChangedName(string oldValue, string newValue)
         {
             Debug.Log($"OnChanedTitle=>{newValue}");
         }
 
         [BindProperty("age")]
-        void OnChangedAge(int oldValue, int newValue)
+        public void OnChangedAge(int oldValue, int newValue)
         {
             Debug.Log($"OnChangedAge=>{newValue}");
         }
