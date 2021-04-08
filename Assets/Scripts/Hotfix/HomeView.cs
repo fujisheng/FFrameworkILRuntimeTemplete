@@ -11,7 +11,7 @@ namespace Game.Hotfix
             base.Initialize();
         }
 
-        //sssssssss
+        //ssssssss
         public override void OnOpen(object param)
         {
             base.OnOpen(param);

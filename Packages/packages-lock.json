@@ -30,6 +30,12 @@
       "source": "local",
       "dependencies": {}
     },
+    "com.fujisheng.ilhotfix": {
+      "version": "file:./../FUPMPackages/com.fujisheng.ilhotfix",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.ourpalm.ilruntime": {
       "version": "file:./../FUPMPackages/com.ourpalm.ilruntime",
       "depth": 0,
