@@ -31,6 +31,20 @@ MonoBehaviour:
     - Code
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
+  - m_GUID: 4155c33c45040e944b4dcd49cb2f14b2
+    m_Address: Game.Hotfix.dll
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Code
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: 535314a5aec657a40961c39e61e10257
+    m_Address: Game.Hotfix.pdb
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Code
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 8b31be6b299caa94095c961b639bbe08, type: 2}
   m_SchemaSet:
