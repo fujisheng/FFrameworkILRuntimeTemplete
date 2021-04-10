@@ -661,6 +661,7 @@ PlayerSettings:
   webGLWasmStreaming: 0
   scriptingDefineSymbols:
     1: DEBUG;ILRUNTIME
+    7: DEBUG;ILRUNTIME
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}

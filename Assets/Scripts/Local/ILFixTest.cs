@@ -4,10 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ILHotfix.Hotfix]
-public class TestClass
+[ILHotfix.Fix]
+public static class TestClass
 {
-    public int Add(int a, int b)
+    public static int Add(int a, int b)
     {
         return a - b;
     }
