@@ -33,14 +33,14 @@ namespace Game.Local.ILR.Reginster
             domain.RegisterValueTypeBinder(typeof(Quaternion), new QuaternionBinder());
             domain.RegisterValueTypeBinder(typeof(Vector2), new Vector2Binder());
 
-            //clr
-            ILRuntime.Runtime.Generated.CLRBindings.Initialize(domain);
-
             //adaptor
             domain.RegisterCrossBindingAdaptor(new IAsyncStateMachineClassInheritanceAdaptor());
             //domain.RegisterCrossBindingAdaptor(new AttributeAdaptor());
             //domain.RegisterCrossBindingAdaptor(new ViewAdapter());
             //domain.RegisterCrossBindingAdaptor(new ViewModelAdapter());
+
+            //clr
+            ILRuntime.Runtime.Generated.CLRBindings.Initialize(domain);
         }
     }
 }
