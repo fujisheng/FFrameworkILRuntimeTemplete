@@ -1,8 +1,5 @@
 ﻿#if UNITY_EDITOR
-using Framework.ILR.Module;
-using Framework.Utility;
 using Game.Local.ILR.Reginster;
-using ILRuntime.Mono.Cecil.Pdb;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -31,7 +28,7 @@ namespace Game.Editor
         static void LoadDll(ILRuntime.Runtime.Enviorment.AppDomain domain , string dllName, out MemoryStream dllStream)
         {
             TextAsset dllAsset = AssetDatabase.LoadAssetAtPath<TextAsset>(dllName);
-            dllStream = new MemoryStream(EncryptionUtility.AESDecrypt(dllAsset.bytes));
+            dllStream = new MemoryStream(Framework.Utility.Encryption.AESDecrypt(dllAsset.bytes));
 
             domain.LoadAssembly(dllStream);
         }

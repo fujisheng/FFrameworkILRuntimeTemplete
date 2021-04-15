@@ -1,23 +1,23 @@
 ﻿using FInject;
-using Framework.ILR.Module.Script;
-using Framework.Module.Debugger;
-using Framework.Module.FSM;
-using Framework.Module.Resource;
+using Framework.ILR.Service.Script;
+using Framework.Service.Debug;
+using Framework.Service.FSM;
+using Framework.Service.Resource;
 
 namespace Game
 {
     public static class Modules
     {
         [Inject]
-        public static IResourceManager Resource;
+        public static IResourceService Resource;
 
         [Inject]
-        public static IDebuggerManager Debug;
+        public static IDebugService Debug;
 
         [Inject]
-        public static IFSMManager FSM;
+        public static IFSMService FSM;
 
         [Inject]
-        public static IScriptManager Script;
+        public static IScriptService Script;
     }
 }

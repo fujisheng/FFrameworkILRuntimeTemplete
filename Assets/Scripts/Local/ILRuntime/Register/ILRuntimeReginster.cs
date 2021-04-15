@@ -1,6 +1,6 @@
-﻿using Framework.ILR.Module.Script;
-using Framework.ILR.Module.Script.Adaptor;
-using Framework.ILR.Module.Script.ValueTypeBinder;
+﻿using Framework.ILR.Service.Script;
+using Framework.ILR.Service.Script.Adaptor;
+using Framework.ILR.Service.Script.ValueTypeBinder;
 using System;
 using UnityEngine;
 using AppDomain = ILRuntime.Runtime.Enviorment.AppDomain;

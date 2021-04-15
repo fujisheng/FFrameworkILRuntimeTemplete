@@ -1,11 +1,11 @@
-﻿using Framework.ILR.Module.Script;
-using Framework.ILR.Module.UI;
+﻿using Framework.ILR.Service.Script;
+using Framework.ILR.Service.UI;
 
 namespace Game.Hotfix
 {
     public static class Main
     {
-        public static void Initialize(IScriptManager scriptManager)
+        public static void Initialize(IScriptService scriptManager)
         {
             //HomeView homeView = new HomeView();
             //UnityEngine.Debug.Log($"homeViewType=>{homeView.GetType()}");

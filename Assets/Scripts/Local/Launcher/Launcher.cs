@@ -1,9 +1,9 @@
 ﻿using FInject;
-using Framework.ILR.Module.Script;
-using Framework.Module;
-using Framework.Module.Debugger;
-using Framework.Module.FSM;
-using Framework.Module.Resource;
+using Framework.ILR.Service.Script;
+using Framework.Service;
+using Framework.Service.Debug;
+using Framework.Service.FSM;
+using Framework.Service.Resource;
 using Game.Local.ILR.Reginster;
 using UnityEngine;
 
@@ -18,22 +18,22 @@ namespace Game
         {
             DontDestroyOnLoad(gameObject);
 
-            ModuleManager.SetInjectInfo(new ModuleDefaultInjectInfo());
-            context = ModuleManager.InjectInfo.Context;
+            Services.SetInjectInfo(new ServicesDefaultInjectInfo());
+            context = Services.InjectInfo.Context;
 
-            context.Bind<IDebuggerManager>().AsInstance(ModuleManager.GetModule<IDebuggerManager>());
-            context.Bind<IFSMManager>().AsInstance(ModuleManager.GetModule<IFSMManager>());
+            context.Bind<IDebugService>().AsInstance(Services.Get<IDebugService>());
+            context.Bind<IFSMService>().AsInstance(Services.Get<IFSMService>());
 
             context.Bind<IILRuntimeReginster>().As<ILRuntimeReginster>();
-            IScriptManager scriptManager;
+            IScriptService scriptManager;
 #if !ILRUNTIME
-            scriptManager = EditorScriptManager.Instance;
+            scriptManager = MonoScriptService.Instance;
             Debug.Log("<color=yellow>现在是直接加载dll调用的</color>");
 #else
-            scriptManager = ScriptManager.Instance;
+            scriptManager = ILRuntimeScriptService.Instance;
             Debug.Log("<color=yellow>现在是通过ILRuntime调用的</color>");
 #endif
-            context.Bind<IScriptManager>().AsInstance(scriptManager);
+            context.Bind<IScriptService>().AsInstance(scriptManager);
 
             Injecter.Inject(typeof(Modules));
             await Modules.Script.Load("Code");
