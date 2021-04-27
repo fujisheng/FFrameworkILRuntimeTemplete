@@ -1,0 +1,8 @@
+<linker>
+	<assembly fullname = "ILRuntime" preserve = "all"/>
+	<assembly fullname = "Framework" preserve = "all"/>
+	<assembly fullname = "Framework.ILRuntime" preserve = "all"/>
+	<assembly fullname = "FInject" preserve = "all"/>
+	<assembly fullname = "ILHotfix" preserve = "all"/>
+	<assembly fullname = "Game.Local" preserve = "all"/>
+</linker>
