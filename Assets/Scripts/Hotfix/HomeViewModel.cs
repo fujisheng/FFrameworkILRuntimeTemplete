@@ -6,8 +6,8 @@ namespace Game.Hotfix
 
     public class HomeViewModel : ViewModel, IPerloadViewModel
     {
-        BindableProperty<string> title = new BindableProperty<string>("Hello ILRuntime");
-        IntBp age = new IntBp(1000);
+        BindableProperty<string> title = "Hello ILRuntime";
+        BindableProperty<int> age = 1000;
 
         public override void Initialize()
         {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Hotfix
 {
-    [Bind(typeof(HomeViewModel), Layer.NORMAL, Flag.CACHE, "HomeView")]
+    [Binding(typeof(HomeViewModel), Layer.NORMAL, Flag.CACHE, "HomeView")]
     public class HomeView : View
     {
         public override void Initialize()
@@ -17,13 +17,13 @@ namespace Game.Hotfix
             base.OnOpen(param);
         }
 
-        [BindProperty("title")]
+        [BindingProperty("title")]
         public void OnChangedName(string oldValue, string newValue)
         {
             Debug.Log($"OnChanedTitle=>{newValue}");
         }
 
-        [BindProperty("age")]
+        [BindingProperty("age")]
         public void OnChangedAge(int oldValue, int newValue)
         {
             Debug.Log($"OnChangedAge=>{newValue}");
