@@ -11,19 +11,18 @@ namespace Game.Hotfix
             base.Initialize();
         }
 
-        //ssssssss
         public override void OnOpen(object param)
         {
             base.OnOpen(param);
         }
 
-        [BindingProperty("title")]
+        [OnValueChanged("title")]
         public void OnChangedName(string oldValue, string newValue)
         {
             Debug.Log($"OnChanedTitle=>{newValue}");
         }
 
-        [BindingProperty("age")]
+        [OnValueChanged("age")]
         public void OnChangedAge(int oldValue, int newValue)
         {
             Debug.Log($"OnChangedAge=>{newValue}");

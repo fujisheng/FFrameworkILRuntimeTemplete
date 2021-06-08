@@ -14,5 +14,17 @@ namespace Game.Hotfix
             base.Initialize();
             Debug.Log("PublicViewModelInit");
         }
+
+        [OnOpen("HomeView")]
+        public void OnOpenHomeView(object args)
+        {
+            Debug.Log("OpenHomeView");
+        }
+
+        [OnClose("HomeView")]
+        public void OnCloseHomeView(object args)
+        {
+            Debug.Log("CloseHomeView");
+        }
     }
 }

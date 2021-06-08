@@ -21,18 +21,18 @@ namespace Game.Hotfix
         {
             var context = Contexts.Create<TView>();
             var view = await context.CreateView();
-            context.BindWithAttribute(view);
-            context.SetValue("title", "sssssssssssssssss");
-            context.SetValue("age", 10000, true);
+            context.BindingWithAttribute(view);
+            context.SetProperty("title", "sssssssssssssssss");
+            context.SetProperty("age", 10000, true);
         }
 
         static async void OpenView<TView, TViewModel>() where TView : IView where TViewModel : IViewModel
         {
             var context = Contexts.Create<TViewModel, TView>();
             var view = await context.CreateView();
-            context.BindWithAttribute(view);
-            context.SetValue("title", "我是通过PublicViewModel 设置的");
-            context.SetValue("age", 1000);
+            context.BindingWithAttribute(view);
+            context.SetProperty("title", "我是通过PublicViewModel 设置的");
+            context.SetProperty("age", 1000);
         }
     }
 }
