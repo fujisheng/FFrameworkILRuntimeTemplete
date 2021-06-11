@@ -5,10 +5,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ILHotfix.Fix]
-public static class TestClass
+public class TestClass
 {
-    public static int Add(int a, int b)
+    public int a = 0;
+    public int Add(int b)
     {
         return a - b;
+    }
+
+    public void Print(int max)
+    {
+        for(int i = 0; i < max; i++)
+        {
+            Debug.Log(i);
+        }
     }
 }
