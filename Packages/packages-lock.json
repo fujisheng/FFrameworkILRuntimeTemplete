@@ -36,6 +36,12 @@
       "source": "local",
       "dependencies": {}
     },
+    "com.google.protobuf": {
+      "version": "file:./../FUPMPackages/com.google.protobuf",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.ourpalm.ilruntime": {
       "version": "file:./../FUPMPackages/com.ourpalm.ilruntime",
       "depth": 0,

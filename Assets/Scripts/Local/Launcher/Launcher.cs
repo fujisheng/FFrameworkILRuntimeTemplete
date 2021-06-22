@@ -37,7 +37,7 @@ namespace Game
 
             Injecter.Inject(typeof(Modules));
             await Modules.Script.Load("Code");
-            var fsm = Modules.FSM.CreateFSM(this, new LoadModuleState());
+            var fsm = Modules.FSM.CreateFSM(this, new LoadModuleState(), new NetworkTest());
             fsm.Start<LoadModuleState>();
             
         }
