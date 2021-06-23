@@ -8,8 +8,8 @@ using UnityEngine;
 
 public class NetworkTest : State<Launcher>
 {
-    public string serverIp = "192.168.20.54";
-    public int port = 8889;
+    public string serverIp = "127.0.0.1";// "192.168.20.54";
+    public int port = 10001;// 8889;
     INetworkService network;
 
     byte[] encryptSeed;
@@ -41,7 +41,8 @@ public class NetworkTest : State<Launcher>
 
     void OnReceive(IPacket packet)
     {
-        if(encryptSeed == null || decryptSeed == null)
+        UnityEngine.Debug.Log($"收到消息{bytesToString(packet.Bytes)}");
+        if (encryptSeed == null || decryptSeed == null)
         {
             var bytes = packet.Bytes;
             encryptSeed = GetRange(bytes, 0, 3).Reverse().ToArray();
@@ -50,11 +51,15 @@ public class NetworkTest : State<Launcher>
         }
         Debug.Log($"id:{packet.Id}");
         Debug.Log($"Length:{packet.Length}");
-        UnityEngine.Debug.Log($"收到消息{bytesToString(packet.Bytes)}");
-        network.Send<LoginBySessionC2S>(0, new LoginBySessionC2S
+        
+        network.Send(0, new Role.req_create
         {
-            Id = 10001
+            name = "sssss"
         });
+        //network.Send<LoginBySessionC2S>(0, new LoginBySessionC2S
+        //{
+        //    Id = 10001
+        //});
     }
 
     byte[] GetRange(byte[] bytes, int startIndex, int endIndex)
@@ -63,6 +68,7 @@ public class NetworkTest : State<Launcher>
         int j = 0;
         for (int i = startIndex; i <= endIndex; i++, j++)
         {
+            Debug.Log($"i:{i} j:{j}");
             result[j] = bytes[i];
         }
         return result;

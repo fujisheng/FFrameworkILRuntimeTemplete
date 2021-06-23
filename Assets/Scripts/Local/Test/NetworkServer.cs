@@ -34,9 +34,10 @@ public class NetworkServer : MonoBehaviour
     void OnAccept(IAsyncResult result)
     {
         UnityEngine.Debug.Log($"有客服端连接到服务器:{result.AsyncState.ToString()}");
-        var msg = Encoding.UTF8.GetBytes("1234");
-        serverSocket.BeginSend(msg, 0, msg.Length, SocketFlags.None, null, null);
+        var msg = Encoding.UTF8.GetBytes("12344321");
         UnityEngine.Debug.Log($"发送了一条消息{bytesToString(msg)}");
+        serverSocket.BeginSend(msg, 0, msg.Length, SocketFlags.None, null, null);
+        
     }
 
     public static string bytesToString(byte[] bytes)

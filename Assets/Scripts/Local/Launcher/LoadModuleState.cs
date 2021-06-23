@@ -19,10 +19,10 @@ namespace Game
         {
             Modules.Script.InvokeMethod("Game.Hotfix.Main", "Initialize", null, new object[] {Modules.Script});
 
-            PatchRegister.Register(new PatchInvoker());
-            var testClass = new TestClass();
-            Debug.Log($"0 + 2 = {testClass.Add(2)}");
-            testClass.Print(10);
+            //PatchRegister.Register(new PatchInvoker());
+            //var testClass = new TestClass();
+            //Debug.Log($"0 + 2 = {testClass.Add(2)}");
+            //testClass.Print(10);
             ChangeState<NetworkTest>(fsm);
         }
 

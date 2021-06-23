@@ -36,8 +36,8 @@
       "source": "local",
       "dependencies": {}
     },
-    "com.google.protobuf": {
-      "version": "file:./../FUPMPackages/com.google.protobuf",
+    "com.google.protobuf.ilruntime": {
+      "version": "file:./../FUPMPackages/com.google.protobuf.ilruntime",
       "depth": 0,
       "source": "local",
       "dependencies": {}
