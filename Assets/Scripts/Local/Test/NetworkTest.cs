@@ -44,7 +44,7 @@ public class NetworkTest : State<Launcher>
     {
         if (encryptSeed == 0 || decryptSeed == 0)
         {
-            var bytes = packet.Data;
+            var bytes = packet.Body;
             UnityEngine.Debug.Log(bytesToString(bytes, 8));
             var encryptSeedBytes = GetRange(bytes, 0, 3).Reverse().ToArray();
             var decryptSeedBytes = GetRange(bytes, 4, 7).Reverse().ToArray();
@@ -59,7 +59,7 @@ public class NetworkTest : State<Launcher>
         if(!isFirst)// && packet.Head.ID == (3<<8 | 1))
         {
             var s = new ProtobufSerializer();
-            var r = s.Deserialize<GamerPVPPingS2C>(packet.Data);
+            var r = s.Deserialize<GamerPVPPingS2C>(packet.Body);
             UnityEngine.Debug.Log($"serverTime:{r.serverTime}" );
         }
     }
