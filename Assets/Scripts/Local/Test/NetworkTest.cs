@@ -17,10 +17,13 @@ public class NetworkTest : State<Launcher>
 
     public override void OnEnter(IFSM<Launcher> fsm)
     {
+        fsm.Owner.context.Bind<INetworkChannel>().AsInstance(new TcpChannel());
+        fsm.Owner.context.Bind<INetworkPackageHelper>().AsInstance(new DefaultNetworkPackageHelper(new PacketPool()));
+        fsm.Owner.context.Bind<INetworkSerializeHelper>().AsInstance(new ProtobufSerializer());
+        fsm.Owner.context.Bind<INetworkBCCHelper>().AsInstance(new DefaultNetworkBCCHelper());
+        fsm.Owner.context.Bind<INetworkCompressHelper>().AsInstance(new DefaultNetworkCompressHelper());
+
         network = Services.Get<INetworkService>();
-        network.SetPackager(new DefaultPackager(new PacketPool()));
-        network.SetNetworkChannel(new TcpChannel());
-        network.SetSerializer(new ProtobufSerializer());
 
         network.OnConnectionSuccessfulHandler += OnConnected;
         network.OnConnectionFailedHandler += OnConnectionFailed;
@@ -39,28 +42,38 @@ public class NetworkTest : State<Launcher>
         Debug.Log($"连接服务器失败 : {msg}");
     }
 
-    bool isFirst = true;
-    void OnReceive(IPacket packet)
+    bool isFirst = false;
+    void OnReceive(INetworkPacket packet)
     {
         if (encryptSeed == 0 || decryptSeed == 0)
         {
-            var bytes = packet.Body;
-            UnityEngine.Debug.Log(bytesToString(bytes, 8));
+            var bytes = packet.Data;
             var encryptSeedBytes = GetRange(bytes, 0, 3).Reverse().ToArray();
             var decryptSeedBytes = GetRange(bytes, 4, 7).Reverse().ToArray();
             encryptSeed = BitConverter.ToUInt32(encryptSeedBytes, 0);
             decryptSeed = BitConverter.ToUInt32(decryptSeedBytes, 0);
 
             UnityEngine.Debug.Log($"收到的加密种子 encrypt:{encryptSeed}  decrypt:{decryptSeed}");
-            network.SetEncryptor(new DefaultEncryptor(encryptSeed, decryptSeed));
+            network.SetNetworkEncryptHelper(new DefaultNetworkEncryptHelper(encryptSeed, decryptSeed));
+            isFirst = true;
+        }
+        else
+        {
             isFirst = false;
         }
 
-        if(!isFirst)// && packet.Head.ID == (3<<8 | 1))
+        if (!isFirst && packet.Head.ID == (3<<8 | 1))
         {
-            var s = new ProtobufSerializer();
-            var r = s.Deserialize<GamerPVPPingS2C>(packet.Body);
-            UnityEngine.Debug.Log($"serverTime:{r.serverTime}" );
+            try
+            {
+                var s = new ProtobufSerializer();
+                var r = s.Deserialize<GamerPVPPingS2C>(packet.Data);
+                UnityEngine.Debug.Log($"serverTime:{r.serverTime}");
+            }
+            catch(Exception ex)
+            {
+                UnityEngine.Debug.Log($"解析数据出错:{ex}");
+            }
         }
     }
 
@@ -70,10 +83,9 @@ public class NetworkTest : State<Launcher>
         time += Time.deltaTime;
         if(time > 2f)
         {
-            UnityEngine.Debug.Log("发了一个心跳包");
             ushort id = 3 << 8 | 1;
 
-            network.Send<GamerPVPPingC2S>(id, new GamerPVPPingC2S
+            network.Send(id, new GamerPVPPingC2S
             {
                 clientTime = 101010,
             });
@@ -88,18 +100,6 @@ public class NetworkTest : State<Launcher>
         for (int i = startIndex; i <= endIndex; i++, j++)
         {
             result[j] = bytes[i];
-        }
-        return result;
-    }
-
-    public static string bytesToString(byte[] bytes, int length)
-    {
-        var result = "";
-        for(int i = 0; i < length; i++)
-        {
-            var b = bytes[i];
-            result += b;
-            result += " ";
         }
         return result;
     }
