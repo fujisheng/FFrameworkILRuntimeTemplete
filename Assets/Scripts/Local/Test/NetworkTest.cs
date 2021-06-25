@@ -15,6 +15,8 @@ public class NetworkTest : State<Launcher>
     uint encryptSeed;
     uint decryptSeed;
 
+    bool connected = false;
+
     public override void OnEnter(IFSM<Launcher> fsm)
     {
         fsm.Owner.context.Bind<INetworkChannel>().AsInstance(new TcpChannel());
@@ -35,6 +37,7 @@ public class NetworkTest : State<Launcher>
     void OnConnected(IAsyncResult result)
     {
         Debug.Log("连接服务器成功");
+        connected = true;
     }
 
     void OnConnectionFailed(string msg)
@@ -80,6 +83,11 @@ public class NetworkTest : State<Launcher>
     float time = 0;
     public override void OnUpdate(IFSM<Launcher> fsm)
     {
+        if (!connected)
+        {
+            return;
+        }
+
         time += Time.deltaTime;
         if(time > 2f)
         {
