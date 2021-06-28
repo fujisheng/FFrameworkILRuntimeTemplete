@@ -3,7 +3,6 @@ using UnityEngine;
 
 namespace Game.Hotfix
 {
-
     public class HomeViewModel : ViewModel, IPerloadViewModel
     {
         public BindableProperty<string> title = "Hello ILRuntime";
@@ -14,7 +13,6 @@ namespace Game.Hotfix
             base.Initialize();
             title.Value = "sssss";
             int a = age;
-            Debug.Log($"2==age {2 == age}");
             Debug.Log("HomeViewModelInit");
         }
     }

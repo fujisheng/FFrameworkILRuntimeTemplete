@@ -3,6 +3,7 @@ using Framework.ILR.Service.Script;
 using Framework.Service;
 using Framework.Service.Debug;
 using Framework.Service.FSM;
+using Framework.Service.Network;
 using Framework.Service.Resource;
 using Game.Local.ILR.Reginster;
 using UnityEngine;
@@ -23,6 +24,8 @@ namespace Game
 
             context.Bind<IDebugService>().AsInstance(Services.Get<IDebugService>());
             context.Bind<IFSMService>().AsInstance(Services.Get<IFSMService>());
+            context.Bind<INetworkService>().AsInstance(Services.Get<INetworkService>());
+            context.Bind<INetworkSerializeHelper>().AsInstance(new ProtobufSerializer());
 
             context.Bind<IILRuntimeReginster>().As<ILRuntimeReginster>();
             IScriptService scriptManager;
@@ -34,12 +37,11 @@ namespace Game
             Debug.Log("<color=yellow>现在是通过ILRuntime调用的</color>");
 #endif
             context.Bind<IScriptService>().AsInstance(scriptManager);
-
+            
             Injecter.Inject(typeof(Modules));
             await Modules.Script.Load("Code");
-            var fsm = Modules.FSM.CreateFSM(this, new LoadModuleState(), new NetworkTest());
+            var fsm = Modules.FSM.CreateFSM(this, new LoadModuleState(), new ConnectServer());
             fsm.Start<LoadModuleState>();
-            
         }
     }
 }

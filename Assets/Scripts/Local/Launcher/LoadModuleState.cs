@@ -1,8 +1,5 @@
 ﻿using Framework.Service.FSM;
 using ILHotfix;
-using ILHotfix.Register;
-using System;
-using UnityEngine;
 
 namespace Game
 {
@@ -17,13 +14,8 @@ namespace Game
     {
         public override async void OnEnter(IFSM<Launcher> fsm)
         {
-            Modules.Script.InvokeMethod("Game.Hotfix.Main", "Initialize", null, new object[] {Modules.Script});
-
-            //PatchRegister.Register(new PatchInvoker());
-            //var testClass = new TestClass();
-            //Debug.Log($"0 + 2 = {testClass.Add(2)}");
-            //testClass.Print(10);
-            ChangeState<NetworkTest>(fsm);
+            Modules.Script.InvokeMethod("Game.Hotfix.Main", "Initialize", null, new object[] { Modules.Script });
+            ChangeState<ConnectServer>(fsm);
         }
 
         public override void OnUpdate(IFSM<Launcher> fsm)

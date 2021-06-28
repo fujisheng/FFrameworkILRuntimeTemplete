@@ -2,6 +2,7 @@
 using Framework.ILR.Service.Script;
 using Framework.Service.Debug;
 using Framework.Service.FSM;
+using Framework.Service.Network;
 using Framework.Service.Resource;
 
 namespace Game
@@ -19,5 +20,8 @@ namespace Game
 
         [Inject]
         public static IScriptService Script;
+
+        [Inject]
+        public static INetworkService Network;
     }
 }
