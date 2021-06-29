@@ -36,7 +36,6 @@ namespace Game
 
         void OnReceive(INetworkPacket packet)
         {
-            UnityEngine.Debug.Log("收到一个消息包");
             if (encryptSeed == 0 || decryptSeed == 0)
             {
                 var bytes = packet.Data;

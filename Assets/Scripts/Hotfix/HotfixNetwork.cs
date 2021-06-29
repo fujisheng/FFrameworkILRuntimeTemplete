@@ -1,6 +1,7 @@
 ﻿using Framework.Service;
 using Framework.Service.Loop;
 using Framework.Service.Network;
+using ProtoBuf;
 using System;
 using System.IO;
 using UnityEngine;
@@ -9,12 +10,12 @@ namespace Game.Hotfix
 {
     public static class HotfixNetwork
     {
-        static ProtobufSerializer serializer = new ProtobufSerializer();
+        static HotfixProtobufSerializer serializer = new HotfixProtobufSerializer();
 
         public static void Init()
         {
             Services.Get<ILoopService>().AddUpdate(OnUpdate);
-            
+
         }
 
         static ushort GetMsgId(CMD cmd, ACT act)
@@ -24,21 +25,19 @@ namespace Game.Hotfix
 
         public static void OnReceive(INetworkPacket packet)
         {
-            if(packet.ID != GetMsgId(CMD.PVP, ACT.PVP_PING))
+            if (packet.ID != GetMsgId(CMD.PVP, ACT.PVP_PING))
             {
                 return;
             }
 
-            UnityEngine.Debug.Log(packet.Head);
             try
             {
-                var p1 = serializer.DeserializeNonGeneric(typeof(GamerPVPPingS2C), packet.Data);
-                var r = p1 as GamerPVPPingS2C;
-                UnityEngine.Debug.Log($"serverTime:{r.serverTime}");
+                var result = serializer.Deserialize<GamerPVPPingS2C>(packet.Data);
+                Debug.Log($"serverTime:{result.serverTime}");
             }
             catch (Exception ex)
             {
-                UnityEngine.Debug.Log($"解析数据出错:{ex}");
+                Debug.Log($"解析数据出错:{ex}");
             }
         }
 
@@ -48,15 +47,19 @@ namespace Game.Hotfix
             time += Time.deltaTime;
             if (time > 2f)
             {
-                ushort id = GetMsgId(CMD.PVP, ACT.PVP_PING);
-                using (MemoryStream ms = new MemoryStream())
+                try
                 {
+                    ushort id = GetMsgId(CMD.PVP, ACT.PVP_PING);
                     var data = new GamerPVPPingC2S
                     {
                         clientTime = 101010,
                     };
-                    var bytes = serializer.SerializeNonGeneric(data);
+                    var bytes = serializer.Serialize(data);
                     Modules.Network.Send(id, bytes);
+                }
+                catch (Exception ex)
+                {
+                    Debug.Log($"发送数据错误:{ex}");
                 }
                 time = 0;
             }
