@@ -1,7 +1,7 @@
-﻿using Framework.Service.FSM;
+﻿using Framework;
+using Framework.Service.FSM;
 using Framework.Service.Network;
 using System;
-using System.Linq;
 using UnityEngine;
 
 namespace Game
@@ -39,11 +39,13 @@ namespace Game
             if (encryptSeed == 0 || decryptSeed == 0)
             {
                 var bytes = packet.Data;
-                var encryptSeedBytes = GetRange(bytes, 0, 3).Reverse().ToArray();
-                var decryptSeedBytes = GetRange(bytes, 4, 7).Reverse().ToArray();
-                encryptSeed = BitConverter.ToUInt32(encryptSeedBytes, 0);
-                decryptSeed = BitConverter.ToUInt32(decryptSeedBytes, 0);
+                if(bytes.Length != 8)
+                {
+                    return;
+                }
 
+                encryptSeed = Utility.Converter.GetUInt32(bytes, 0, true);
+                decryptSeed = Utility.Converter.GetUInt32(bytes, 4, true);
                 Debug.Log($"收到的加密种子 encrypt:{encryptSeed}  decrypt:{decryptSeed}");
                 Modules.Network.SetNetworkEncryptHelper(new DefaultNetworkEncryptHelper(encryptSeed, decryptSeed));
             }
@@ -51,17 +53,6 @@ namespace Game
             {
                 Modules.Script.InvokeMethod("Game.Hotfix.HotfixNetwork", "OnReceive", null, new object[] { packet });
             }
-        }
-
-        byte[] GetRange(byte[] bytes, int startIndex, int endIndex)
-        {
-            var result = new byte[endIndex - startIndex + 1];
-            int j = 0;
-            for (int i = startIndex; i <= endIndex; i++, j++)
-            {
-                result[j] = bytes[i];
-            }
-            return result;
         }
     }
 }
