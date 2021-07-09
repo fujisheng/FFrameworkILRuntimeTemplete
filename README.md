@@ -7,3 +7,4 @@ git clone git@github.com:fujisheng/FFrameworkILRuntimeTemplete.git
 cd FFrameworkILRuntimeTemplete/  
 git submodule init  
 git submodule update  
+TODO  可以用rosyln把多个hotfix工程合并成一个dll
