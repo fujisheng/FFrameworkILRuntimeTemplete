@@ -1,6 +1,7 @@
 ﻿using Framework.ILR.Service.UI;
 using UnityEngine;
 
+
 namespace Game.Hotfix
 {
     [Binding(typeof(HomeViewModel))] //必须有的
