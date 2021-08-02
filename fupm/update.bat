@@ -1,2 +1,0 @@
-.\fupm.exe update
-pause
