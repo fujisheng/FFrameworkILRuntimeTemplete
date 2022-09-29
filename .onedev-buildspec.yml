@@ -1,0 +1,21 @@
+version: 18
+jobs:
+- name: push to github
+  steps:
+  - !PushRepository
+    name: push to github
+    remoteUrl: https://github.com/fujisheng/FFrameworkILRuntimeTemplete.git
+    userName: fujisheng
+    passwordSecret: github
+    withLfs: false
+    force: true
+    condition: ALL_PREVIOUS_STEPS_WERE_SUCCESSFUL
+  triggers:
+  - !BranchUpdateTrigger {}
+  - !TagCreateTrigger {}
+  retryCondition: never
+  maxRetries: 3
+  retryDelay: 30
+  cpuRequirement: 250
+  memoryRequirement: 256
+  timeout: 3600
